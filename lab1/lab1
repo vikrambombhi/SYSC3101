@@ -1,0 +1,85 @@
+#lang racket
+
+;; Exercise 1
+;; Calculate the area of a circle with the specified radius.
+(define (area-of-circle radius)
+  (* pi radius radius))
+;; Calculate the area of a ring whose radius is outer and
+;; whose hole has a radius of inner.
+(define (area-of-ring outer inner)
+  (- (area-of-circle outer)
+     (area-of-circle inner)))
+
+
+;; Exercise 2
+(define (f x)
+  (+ x 10))
+
+(define (g x)
+  (+ x 10))
+
+(define (h x)
+  (+ x 10))
+
+;; Exercise 3
+(define (sum-coins pennies nickels dimes quarters)
+  (+ pennies (* 5 nickels) (* 10 dimes) (* 25 quarters)))
+
+;; Exercise 4
+(define (area-of-cylinder-one-def r h)
+  (* 2 pi r (+ h r)))
+
+(define (side-area r h)
+  (* 2 pi h r))
+
+(define (area-of-cylinder r h)
+  (+ (side-area r h) (* (area-of-circle r) 2)))
+
+;; Exercise 5
+(define (interest x)
+  (cond
+    [(<= x 1000) (* x 0.04)]
+    [(<= x 5000) (* x 0.045)]
+    [(> x 5000) (* x 0.05)]
+    ))
+
+;; Exercise 6
+(define (how-many-solutions a b c)
+  (cond
+    [(> (* b b) (* 4 a c)) 2]
+    [(= (* b b) (* 4 a c)) 1]
+    [(< (* b b) (* 4 a c)) 0]
+    ))
+
+
+;; Test Exercise 2
+(f 10)
+(g 10)
+(h 10)
+
+;; Test Excercise 3
+(sum-coins 1 0 0 0)
+(sum-coins 0 1 0 0)
+(sum-coins 0 0 1 0)
+(sum-coins 0 0 0 1)
+(sum-coins 1 1 1 1)
+
+;; Test Excercise 4
+(area-of-cylinder-one-def 2 3)
+(area-of-cylinder-one-def 3 4)
+(area-of-cylinder 2 3)
+(area-of-cylinder 3 4)
+
+;; Test Excercise 5
+(interest 500)
+(interest 1000)
+(interest 2000)
+(interest 5000)
+(interest 10000)
+
+;; Test Excersise 6
+(how-many-solutions 1 2 1)
+(how-many-solutions 2 4 1)
+(how-many-solutions 2 4 3)
+(how-many-solutions 1 0 -1)
+(how-many-solutions 2 4 2)

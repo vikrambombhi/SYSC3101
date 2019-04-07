@@ -30,7 +30,7 @@
   (cond
     [(null? numbers) 0]
     [(= (car numbers) n) (+ 1 (occurrences (cdr numbers) n))]
-    [else (+ 0 (occurrences (cdr numbers) n))]
+    [else (occurrences (cdr numbers) n)]
   )
 )
 
